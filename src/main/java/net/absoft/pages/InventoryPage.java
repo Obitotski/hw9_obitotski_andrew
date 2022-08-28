@@ -22,4 +22,12 @@ public class InventoryPage extends BaseStorePage {
     return this;
   }
 
+  @Step("Removing item {itemName} from cart")
+  public InventoryPage removeItemFromCart(String itemName) {
+    WebElement item = driver.findElement(By.xpath(String.format(itemXPath, itemName)));
+    WebElement removeFromCartButton = item.findElement(
+            By.xpath("//button[contains(@data-test, 'remove')]"));
+    removeFromCartButton.click();
+    return this;
+  }
 }

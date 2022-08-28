@@ -28,4 +28,17 @@ public class CartTest extends BaseTest {
         .openCart()
         .checkItemPresence(ITEM);
   }
+
+  @Description("Test removing item from cart")
+  @Test
+  public void testRemovingItemFromCart() {
+    inventoryPage
+            .addItemToCart(ITEM)
+            .openCart()
+            .checkItemPresence(ITEM)
+            .clickContinueShopping()
+            .removeItemFromCart(ITEM)
+            .openCart()
+            .checkItemAbsence(ITEM);
+  }
 }
